@@ -1,0 +1,15 @@
+name: Terraform fmt check
+
+on:
+  push:
+
+jobs:
+  tf-fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v2.0.3
+        with:
+          terraform_version: 1.5.5
+      - name: Terraform fmt
+        run: terraform fmt -check -recursive
